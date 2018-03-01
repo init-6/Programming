@@ -11,6 +11,7 @@ using namespace std;
 #define CLEAR(x,with) memset(x,with,sizeof(x))
 #define sz size()
 #define mkp make_pair
+
 const int MOD = 1e9 + 7;
 
 typedef long long LL;
@@ -19,7 +20,9 @@ typedef vector <LL> VL;
 typedef vector <VL> VVL;
 typedef vector <VI> VVI;
 typedef pair <int, int> PI;
+typedef pair <LL, LL> PLI;
 typedef vector <PI> VPI;
+typedef vector <PLI> VPLI;
 inline LL fpow(LL n, LL k, int p = MOD) {LL r = 1; for (; k; k >>= 1) {if (k & 1) r = r * n % p; n = n * n % p;} return r;}
 inline int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
@@ -82,9 +85,27 @@ struct Matrix
 	}
 };
 
-
 int main()
 {
-	
+	int T; cin >> T;
+
+	while(T--)
+	{
+		LL l, d, t; cin >> l >> d >> t;
+
+		LL a1 = d * inv(l) % MOD; // this is cos x;
+		Matrix A;
+		A[0][0] = 2 * a1 % MOD; // 2 cosx; cos x = d/l;
+		A[1][0] = 1;
+		A[0][1] = MOD - 1; // -1
+
+		A = A ^ (t-1);
+		LL res = A[0][0] * a1 % MOD;
+		res = (res + A[0][1]) % MOD;
+
+		res = (res * l) % MOD;
+		
+		cout << res << "\n";
+	}
 	return 0;
 }
