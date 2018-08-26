@@ -26,6 +26,15 @@ inline int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
 int main()
 {
+	int T; cin >> T;
+	while(T--)
+	{
+		int N; cin >> N;
+		VI colors(N, 0); REP(i, N) cin >> colors[i];
+		set <int> S(all(colors));
+
+		cout << N - S.sz << "\n";
+	}
 	
 	return 0;
 }

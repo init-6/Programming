@@ -26,6 +26,17 @@ inline int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
 int main()
 {
+	int N; cin >> N;
+
+	set <int> S;
+
+	REP(i, N)
+	{
+		int x; cin >> x;
+		if(x != 0) S.insert(x);
+	}
+
+	cout << S.sz << "\n";
 	
 	return 0;
 }

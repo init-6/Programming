@@ -24,6 +24,7 @@ inline LL fpow(LL n, LL k, int p = MOD) {LL r = 1; for (; k; k >>= 1) {if (k & 1
 inline int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
 
+
 int main()
 {
 	

@@ -26,6 +26,19 @@ inline int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
 int main()
 {
-	
+	int T; cin >> T;
+	REP(c, T)
+	{
+		double A; cin >> A;
+		double AA = A*A;
+		double magic = asin(AA - 1.0)*0.5;
+
+		double cosx = cos(magic)*0.5, sinx = sin(magic)*0.5;
+		cout << setprecision(9);
+		cout << "Case #" << c << ": \n";
+		cout << cosx << " " << sinx << " " << 0.0 << "\n";
+		cout << -1.0*sinx << " " << cosx << " " << 0.0 << "\n";
+		cout << 0.0 << " " << 0.0 << " " << 0.5 << "\n";
+	}
 	return 0;
 }

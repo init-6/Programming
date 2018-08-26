@@ -26,6 +26,36 @@ inline int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
 int main()
 {
-	
+	int T; cin >> T;
+	REP(c, T)
+	{
+		int N; cin >> N;
+		LL A[N]; REP(i, N) cin >> A[i];
+
+		bool done = false;
+		while(!done)
+		{
+			done = true;
+			REP(i, N-2)
+			{
+				if(A[i] > A[i+2])
+				{
+					done = false;
+					swap(A[i], A[i+2]);
+				}
+			}
+		}
+
+		bool good = true;
+		REP(i, N-1) if(A[i] > A[i+1])
+		{
+			cout << "Case #" << c+1 << ": " << i << "\n";
+			good = false;
+			break;
+		}
+
+		if(good) 
+			cout << "Case #" << c+1 << ": OK\n";
+	}
 	return 0;
 }

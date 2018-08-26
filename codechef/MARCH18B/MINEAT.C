@@ -23,9 +23,43 @@ typedef vector <PI> VPI;
 inline LL fpow(LL n, LL k, int p = MOD) {LL r = 1; for (; k; k >>= 1) {if (k & 1) r = r * n % p; n = n * n % p;} return r;}
 inline int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
+int poss(VI v, int x)
+{
+
+	int val = 0;
+	REP(i, v.sz)
+	val += ((v[i]/x) + (v[i] % x == 0 ? 0 : 1));
+
+	return val;
+}
 
 int main()
 {
-	
+	int T; cin >> T;
+	while(T--)
+	{
+		int N, H; cin >> N >> H;
+		VI bananas(N, 0); REP(i, N) cin >> bananas[i];
+
+		int low = 1, high = bananas[N-1], mid = 0;
+
+		int steps = 0;
+		while(steps <= 64)
+		{
+			//cout << "Before low = " << low << " mid = " << mid << " high = " << high << "\n";
+			steps++;
+
+			mid = low + ((high - low) >> 1);
+
+			if(poss(bananas, mid) > H)
+			low = mid + 1;
+			else high = mid;
+			//cout << "After low = " << low << " mid = " << mid << " high = " << high << "\n";
+
+		}
+
+		cout << (low + ((high - low) >> 1)) << "\n";
+
+	}
 	return 0;
 }

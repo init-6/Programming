@@ -26,6 +26,19 @@ inline int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
 int main()
 {
+	string s; cin >> s;
+	VI c(26, 0);
+	REP(i, s.sz) c[s[i] - 'a']++;
+	cout << "\n";
+
+	set <int> S(all(c));S.insert(0);
+	set <int > :: iterator it = S.end();
+	--it;
+
+	if(S.sz == 2) { cout << "YES\n"; return 0;}
+	if(S.sz == 3) { int x = *it; cout << x << "\n"; --it;/*S.erase(S.end());*/ int y = *it; cout << y << "\n";if(x == y+1) cout << "YES\n"; else cout << "NO\n"; return 0; }
+
+	cout << "NO\n";
 	
 	return 0;
 }

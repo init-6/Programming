@@ -23,9 +23,27 @@ typedef vector <PI> VPI;
 inline LL fpow(LL n, LL k, int p = MOD) {LL r = 1; for (; k; k >>= 1) {if (k & 1) r = r * n % p; n = n * n % p;} return r;}
 inline int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
-
 int main()
 {
+	int T; cin >> T;
+	while(T--)
+	{
+		int N; cin >> N;
+		double ans = 0;
+		REP(i, N)
+		{
+			double p, q, d; cin >> p >> q >> d;
+			p = p*q;
+			double originalp = p;
+
+			p += (p*d/100);
+			p -= (p*d/100);
+
+			ans += (originalp - p);
+		}
+
+		printf("%.9f\n", ans);
+	}
 	
 	return 0;
 }

@@ -26,6 +26,6 @@ inline int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
 int main()
 {
-	
+
 	return 0;
 }
