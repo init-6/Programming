@@ -26,6 +26,31 @@ inline int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
 int main()
 {
+	int T; cin >> T;
+	while(T--)
+	{
+		int N; cin >> N;
+		VL days(N+1, 0);
+		FOR(i, 1, N+1) cin >> days[i];
+
+		VL pre(N+1, 0);
+
+		pre[1] = days[1];
+		FOR(i, 2, N+1)
+			pre[i] = pre[i-1] + days[i];
+
+		//REP(i, N+1) cout << pre[i] << " "; cout << "\n";
+
+		LL ans = 0, i = 1, sum = 0;
+		while(i < N && sum < N)
+		{
+			sum += pre[i];
+			i += pre[i];
+			ans++;
+		}
+
+		cout << ans << "\n";
+	}
 	
 	return 0;
 }

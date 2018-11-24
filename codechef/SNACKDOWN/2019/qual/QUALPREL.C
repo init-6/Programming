@@ -26,6 +26,25 @@ inline int inv(int a, int p = MOD) {return fpow(a, p - 2, p);}
 
 int main()
 {
+	int T; cin >> T;
+	while(T--)
+	{
+		int N; cin >> N;
+		VL scores(N, 0);
+		int rank; cin >> rank;
+
+		REP(i, N) cin >> scores[i]; sort(all(scores));
+		reverse(all(scores));
+
+		int qualified = 0, cutoff = scores[rank-1];
+		REP(i, N)
+		{
+			if(scores[i] < cutoff) break;
+			qualified++;
+		}
+
+		cout << qualified << "\n";
+	}
 	
 	return 0;
 }
